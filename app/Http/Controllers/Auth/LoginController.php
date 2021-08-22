@@ -12,11 +12,14 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+
+    /*
+        Copy Paste for Testing, put inside the store() function
+        // dd();
+    */
+
     public function store(Request $request)
     {
-
-        // dd($request->only('username','email', 'password'));
-
         // Validation
         $this->validate($request, [
             'username' => 'required',
@@ -24,12 +27,12 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        // Sign in the user
+        // Check the if the login details are corrent
         if (!auth()->attempt($request->only('username', 'email', 'password'), $request->remember)) {
             return back()->with('status', 'Invalid Login Details');
         }
 
-
+        //Redirect to Student Home Page
         return redirect()->route('home');
     }
 }
