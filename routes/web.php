@@ -20,5 +20,8 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/student/home', [HomeController::class, 'index'])->name('home');
-    Route::post('/student/logout', [LogoutController::class, 'store'])->name('logout');
+    Route::get('/student/enrollment', function () {
+        return view('student.enrollment');
+    })->name('enrollment');
+    Route::post('/student/login', [LogoutController::class, 'store'])->name('logout');
 });

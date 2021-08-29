@@ -36,21 +36,28 @@ class RegisterController extends Controller
                 'string',
                 'min:3',  
                 'max:255', 
-                'regex:/^[a-zA-Z-. ]*$/'],
+                'regex:/^[a-zA-Z-. ]*$/'
+            ],
             'last_name' => [
                 'required', 
                 'string',
                 'min:3',  
                 'max:255', 
-                'regex:/^[a-zA-Z-. ]*$/'],
+                'regex:/^[a-zA-Z-. ]*$/'
+            ],
             'email' => [
                 'required', 
                 'email', 
                 'max:255', 
-                'regex:|^[A-Z0-9._%+-]+@iskolarngbayan.pup.edu\.ph$|i'],
+                'regex:|^[A-Z0-9._%+-]+@iskolarngbayan.pup.edu\.ph$|i'
+            ],
+            'section' => [
+                'required'
+            ],
             'password' => [
                 'required', 
-                'confirmed'],
+                'confirmed'
+            ],
         ]);
 
         // Create the validated registration inputs to the user table
@@ -59,6 +66,7 @@ class RegisterController extends Controller
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
+            'section' => $request->section,
             'password' => Hash::make($request->password),
         ]);
 
